@@ -1,0 +1,15 @@
+{
+  "name": "timeplz",
+  "version": "0.1.0",
+  "description": "time, plz? get your yast status for the current week.",
+  "main": "timeplz.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://www.github.com/jonpacker/timeplz"
+  },
+  "author": "Jon Packer",
+  "license": "MIT"
+}
