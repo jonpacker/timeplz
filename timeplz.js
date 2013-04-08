@@ -27,6 +27,7 @@ if (Object.keys(argv).length == 2) {
   opts.user = argv.u;
   opts.pass = argv.p;
   opts.daylen = parseFloat(argv.d);
+  opts.prj = argv.f || null;
   opts.weeklen = parseInt(argv.w, 10);
 
   if (argv.s) {
@@ -42,10 +43,10 @@ yast.login(opts.user, opts.pass, function(err, user) {
   var endThisWeek = moment().endOf('week');
   async.parallel({
     today: function(cb) {
-      yast.analytics.timeSpentInPeriod(user, startToday._d, endToday._d, cb);
+      yast.analytics.timeSpentOnProjectInPeriod(user, opts.prj, startToday._d, endToday._d, cb);
     },
     thisWeek: function(cb) {
-      yast.analytics.timeSpentInPeriod(user, startThisWeek._d, endThisWeek._d, cb);
+      yast.analytics.timeSpentOnProjectInPeriod(user, opts.prj, startThisWeek._d, endThisWeek._d, cb);
     }
   }, function(err, res) {
     if (err) throw err;
